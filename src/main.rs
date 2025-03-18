@@ -1,6 +1,8 @@
-use gtk4 as gtk;
 use gtk::prelude::*;
-use gtk::{Application, ApplicationWindow, Box, Button, Entry, Label, Orientation, Switch, ComboBoxText};
+use gtk::{
+    Application, ApplicationWindow, Box, Button, ComboBoxText, Entry, Label, Orientation, Switch,
+};
+use gtk4 as gtk;
 
 fn main() {
     let app = Application::builder()
@@ -48,9 +50,13 @@ fn main() {
 
         save_button.connect_clicked(move |_| {
             let timeout = timeout_entry_clone.text();
-            let mode = if mode_switch_clone.is_active() { "Single Key" } else { "Double Key" };
+            let mode = if mode_switch_clone.is_active() {
+                "Single Key"
+            } else {
+                "Double Key"
+            };
             let input_method = input_dropdown_clone.active_id().unwrap_or_default();
-            
+
             println!("Settings Saved:");
             println!("Timeout: {} ms", timeout);
             println!("Mode: {}", mode);
